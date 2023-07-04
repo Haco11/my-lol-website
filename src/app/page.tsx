@@ -1,10 +1,9 @@
 "use client";
-import styles from "./page.module.css";
 import { useState } from "react";
 import axios from "axios";
 export default function Home() {
   const [summonerName, setSummonerName] = useState("");
-  const [playerData, setPlayerData] = useState(null);
+  const [playerData, setPlayerData] = useState<any>(null);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -14,12 +13,13 @@ export default function Home() {
       );
 
       setPlayerData(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   };
   return (
-    <div>
+    <main>
       <h1>League of Legends Match History</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -35,11 +35,11 @@ export default function Home() {
           <div>
             <h2>Player Information</h2>
             <p>Name: {playerData.name}</p>
-            <p>Level: {playerData.level}</p>
+            <p>Level: {playerData.summonerLevel}</p>
             {/* Display other player information as needed */}
           </div>
         )}
       </ul>
-    </div>
+    </main>
   );
 }
