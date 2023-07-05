@@ -7,6 +7,12 @@ const User = ({ playerData }: any) => {
         {playerData && (
           <div>
             <h2>Player Information</h2>
+            <img
+              src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
+              alt="profile"
+              width={100}
+              height={100}
+            />
             <p>Name: {playerData.name}</p>
             <p>Level: {playerData.summonerLevel}</p>
             {/* Display other player information as needed */}

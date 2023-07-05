@@ -14,6 +14,7 @@ export default function Home() {
           summonerName
         )}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
       );
+      console.log(response.data);
 
       setPlayerData(response.data);
     } catch (error) {
