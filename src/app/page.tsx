@@ -3,6 +3,7 @@ import axios from "axios";
 import Search from "@/components/Search/Search";
 import User from "@/components/User/User";
 import { useState } from "react";
+import "./globals.css";
 
 export default function Home() {
   const [playerData, setPlayerData] = useState(null);
@@ -22,11 +23,9 @@ export default function Home() {
     }
   };
   return (
-    <main>
-      <div>
-        <Search onSubmit={handleSubmit} />
-        {playerData && <User playerData={playerData} />}
-      </div>
+    <main className="container">
+      <Search onSubmit={handleSubmit} />
+      {playerData && <User playerData={playerData} />}
     </main>
   );
 }

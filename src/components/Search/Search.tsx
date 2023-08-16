@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import "./Search.css";
 
 const Search = ({ onSubmit }: any) => {
   const [summonerName, setSummonerName] = useState("");
@@ -10,7 +10,7 @@ const Search = ({ onSubmit }: any) => {
   };
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search">
         <input
           type="text"
           value={summonerName}
