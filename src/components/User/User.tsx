@@ -2,7 +2,7 @@ import React from "react";
 
 const User = ({ playerData }: any) => {
   return (
-    <div>
+    <section>
       <ul>
         {playerData && (
           <div>
@@ -19,7 +19,7 @@ const User = ({ playerData }: any) => {
           </div>
         )}
       </ul>
-    </div>
+    </section>
   );
 };
 
