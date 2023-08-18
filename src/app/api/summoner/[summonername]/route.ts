@@ -8,7 +8,8 @@ export async function GET(
     const summonerName = params.summonername;
 
     const response = await axios.get(
-      `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
+      `https://euw1.api.riotgames.com` +
+        `/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
     );
 
     return new Response(JSON.stringify(response.data), {
