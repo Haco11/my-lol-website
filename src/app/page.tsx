@@ -11,11 +11,13 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (summonerName: string) => {
+  const handleSubmit = async (summonerName: string, region: string) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.get(`/api/summoner/${summonerName}`);
+      const response = await axios.get(
+        `/api/summoner/${region}/${summonerName}`
+      );
       console.log(response.data);
 
       setPlayerData(response.data);

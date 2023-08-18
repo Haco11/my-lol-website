@@ -8,7 +8,7 @@ const Search = ({ onSubmit }: any) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (summonerName.trim() !== "") {
-      onSubmit(summonerName);
+      onSubmit(summonerName, region);
       setSummonerName("");
     }
   };

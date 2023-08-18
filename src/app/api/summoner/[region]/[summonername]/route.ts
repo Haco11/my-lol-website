@@ -2,13 +2,15 @@ import axios from "axios";
 
 export async function GET(
   request: Request,
-  { params }: { params: { summonername: string } }
+  { params }: { params: { summonername: string; region: string } }
 ) {
   try {
     const summonerName = params.summonername;
+    const region = params.region;
 
+    console.log(params);
     const response = await axios.get(
-      `https://euw1.api.riotgames.com` +
+      `https://${region}.api.riotgames.com` +
         `/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
     );
 
