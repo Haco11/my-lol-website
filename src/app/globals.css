@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #94b7eb;
+  background-color: #000814;
 }
 
 section {
@@ -21,4 +21,9 @@ section {
   width: 100%;
   margin: auto;
   margin-top: 10vh;
+}
+
+.loading {
+  color: #fff;
+  font-size: 1.5rem;
 }
