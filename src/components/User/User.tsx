@@ -19,7 +19,7 @@ const User = ({ playerData }: any) => {
               </div>
             </div>
             <div className="user--info">
-              <p>Name: {playerData.name}</p>
+              <p>{playerData.name}</p>
               {/* Display other player information as needed */}
             </div>
           </div>
