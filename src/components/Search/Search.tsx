@@ -6,7 +6,9 @@ const Search = ({ onSubmit }: any) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    onSubmit(summonerName);
+    if (summonerName.trim() !== "") {
+      onSubmit(summonerName);
+    }
   };
   return (
     <section>
