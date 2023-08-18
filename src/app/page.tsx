@@ -20,7 +20,7 @@ export default function Home() {
       );
       console.log(response.data);
 
-      setPlayerData(response.data);
+      setPlayerData(response.data.playerData);
 
       setError(null);
     } catch (error: any) {
