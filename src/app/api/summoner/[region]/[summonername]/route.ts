@@ -6,6 +6,12 @@ interface RequestParams {
     region: string;
   };
 }
+const regionMappings: Record<string, string[]> = {
+  europe: ["euw1"],
+  americas: ["na1", "br1", "la1", "la2", "oc1"],
+  asia: ["jp1", "kr", "tr1"],
+  sea: ["ph2", "sg2", "th2", "tw2", "vn2"],
+};
 
 async function fetchSummonerData(region: string, summonerName: string) {
   try {
@@ -21,8 +27,21 @@ async function fetchSummonerData(region: string, summonerName: string) {
 
 async function fetchMatchHistory(region: string, playerPuuid: string) {
   try {
+    let matchApiHostnames = "";
+
+    for (const [key, value] of Object.entries(regionMappings)) {
+      if (value.includes(region)) {
+        matchApiHostnames = key;
+        break;
+      }
+    }
+
+    if (!matchApiHostnames) {
+      throw new Error("Invalid region code.");
+    }
+
     const matchHistoryResponse = await axios.get(
-      `https://europe.api.riotgames.com` +
+      `https://${matchApiHostnames}.api.riotgames.com` +
         `/lol/match/v5/matches/by-puuid/${playerPuuid}/ids?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
     );
 
@@ -30,13 +49,13 @@ async function fetchMatchHistory(region: string, playerPuuid: string) {
       async (gameId: string) => {
         try {
           const gameResponse = await axios.get(
-            `https://europe.api.riotgames.com` +
+            `https://${matchApiHostnames}.api.riotgames.com` +
               `/lol/match/v5/matches/${gameId}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
           );
           return gameResponse.data;
         } catch (error) {
           console.error(`Error fetching game data for game ${gameId}:`, error);
-          return null; // Return null for failed requests
+          return null;
         }
       }
     );
@@ -55,8 +74,8 @@ export async function GET(request: Request, { params }: RequestParams) {
   try {
     const summonerData = await fetchSummonerData(region, summonerName);
     const playerPuuid = summonerData.puuid;
+
     const matchHistory = await fetchMatchHistory(region, playerPuuid);
-    console.log("aa");
     return new Response(
       JSON.stringify({ playerData: summonerData, match: matchHistory }),
       {
