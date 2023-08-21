@@ -7,7 +7,7 @@ interface RequestParams {
   };
 }
 const regionMappings: Record<string, string[]> = {
-  europe: ["euw1"],
+  europe: ["euw1", "eun1"],
   americas: ["na1", "br1", "la1", "la2", "oc1"],
   asia: ["jp1", "kr", "tr1"],
   sea: ["ph2", "sg2", "th2", "tw2", "vn2"],

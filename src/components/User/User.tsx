@@ -17,7 +17,7 @@ const User = ({ playerData, error }: any) => {
                   <div className="user--level"> {playerData.summonerLevel}</div>
                   <div className="user--img">
                     <img
-                      src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
+                      src={`http://ddragon.leagueoflegends.com/cdn/13.16.1/img/profileicon/${playerData.profileIconId}.png`}
                       alt="profile"
                       width={100}
                       height={100}
