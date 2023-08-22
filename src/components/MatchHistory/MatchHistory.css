@@ -1,0 +1,12 @@
+.match {
+  background-color: #003566;
+  border-radius: 5px;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.match:last-child {
+  margin-bottom: 0rem;
+}

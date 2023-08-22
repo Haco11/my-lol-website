@@ -43,7 +43,7 @@ export default function Home() {
       ) : (
         <>
           <User playerData={playerData} error={error} />
-          <MatchHistory matchData={matchData} />
+          <MatchHistory matchData={matchData} playerData={playerData} />
         </>
       )}
     </main>
