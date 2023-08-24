@@ -100,15 +100,27 @@ const MatchHistory = ({ matchData, playerData }: any) => {
                     })}
                   </div>
                 )}
-                <div>
-                  {gameData.info.participants.map(
-                    (data: Participant, i: number) => (
+                <div className="team">
+                  <h3>Team 1</h3>
+                  {gameData.info.participants
+                    .filter((data: Participant) => data.teamId === 100) // Replace 100 with the actual teamId for Team 1
+                    .map((data: Participant, i: number) => (
                       <p key={i}>
                         Player {i + 1}: {data.summonerName}, KDA:{data.kills}/
                         {data.deaths}/{data.assists}
                       </p>
-                    )
-                  )}
+                    ))}
+                </div>
+                <div className="team">
+                  <h3>Team 2</h3>
+                  {gameData.info.participants
+                    .filter((data: Participant) => data.teamId === 200) // Replace 200 with the actual teamId for Team 2
+                    .map((data: Participant, i: number) => (
+                      <p key={i}>
+                        Player {i + 1}: {data.summonerName}, KDA:{data.kills}/
+                        {data.deaths}/{data.assists}
+                      </p>
+                    ))}
                 </div>
               </div>
             );
