@@ -6,6 +6,8 @@
   padding: 1rem;
   margin-bottom: 1rem;
   color: #fff;
+  justify-content: space-between;
+  align-items: center;
 }
 .match:last-child {
   margin-bottom: 0rem;

@@ -58,28 +58,27 @@ const MatchHistory = ({ matchData, playerData }: any) => {
 
             return (
               <div key={index} className="match">
-                <h3>{gameData.info.gameMode}</h3>
+                <div>
+                  <h3>{gameData.info.gameMode}</h3>
+                  {playerParticipant && (
+                    <div className="champion">
+                      <img
+                        src={`https://ddragon.leagueoflegends.com/cdn/13.16.1/img/champion/${playerParticipant.championName}.png`}
+                        alt={`Champion ${playerParticipant.championName}`}
+                        width={64}
+                        height={64}
+                      />
+                    </div>
+                  )}
+                  <p>{formatTimeAgo(gameData.info.gameStartTimestamp)}</p>
+                </div>
                 {playerParticipant && (
-                  <div className="champion">
-                    <img
-                      src={`https://ddragon.leagueoflegends.com/cdn/13.16.1/img/champion/${playerParticipant.championName}.png`}
-                      alt={`Champion ${playerParticipant.championName}`}
-                      width={64}
-                      height={64}
-                    />
-                  </div>
+                  <p>
+                    KDA: {playerParticipant.kills}/{playerParticipant.deaths}/
+                    {playerParticipant.assists}
+                  </p>
                 )}
 
-                <p>{formatTimeAgo(gameData.info.gameStartTimestamp)}</p>
-
-                {playerParticipant && (
-                  <div className="kda">
-                    <p>
-                      KDA: {playerParticipant.kills}/{playerParticipant.deaths}/
-                      {playerParticipant.assists}
-                    </p>
-                  </div>
-                )}
                 {playerParticipant && playerParticipant.itemsPurchased > 0 && (
                   <div className="items">
                     <p>Summoner's Items:</p>
