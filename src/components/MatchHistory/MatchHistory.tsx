@@ -45,7 +45,6 @@ const getParticipantBySummonerName = (
 };
 
 const MatchHistory = ({ matchData, playerData }: any) => {
-  const summonerName = playerData?.name;
   return (
     <>
       {matchData && (
@@ -100,27 +99,43 @@ const MatchHistory = ({ matchData, playerData }: any) => {
                     })}
                   </div>
                 )}
-                <div className="team">
-                  <h3>Team 1</h3>
-                  {gameData.info.participants
-                    .filter((data: Participant) => data.teamId === 100) // Replace 100 with the actual teamId for Team 1
-                    .map((data: Participant, i: number) => (
-                      <p key={i}>
-                        Player {i + 1}: {data.summonerName}, KDA:{data.kills}/
-                        {data.deaths}/{data.assists}
-                      </p>
-                    ))}
-                </div>
-                <div className="team">
-                  <h3>Team 2</h3>
-                  {gameData.info.participants
-                    .filter((data: Participant) => data.teamId === 200) // Replace 200 with the actual teamId for Team 2
-                    .map((data: Participant, i: number) => (
-                      <p key={i}>
-                        Player {i + 1}: {data.summonerName}, KDA:{data.kills}/
-                        {data.deaths}/{data.assists}
-                      </p>
-                    ))}
+                <div className="teams">
+                  <div className="team">
+                    <h3>Team 1</h3>
+                    {gameData.info.participants
+                      .filter((data: Participant) => data.teamId === 100) // Replace 100 with the actual teamId for Team 1
+                      .map((data: Participant, i: number) => (
+                        <div className="team--info" key={i}>
+                          <img
+                            src={`https://ddragon.leagueoflegends.com/cdn/13.16.1/img/champion/${data.championName}.png`}
+                            alt={`Champion ${data.championName}`}
+                            width={26}
+                            height={26}
+                          />
+                          <div className="summonerName">
+                            <p> {data.summonerName}</p>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                  <div className="team">
+                    <h3>Team 2</h3>
+                    {gameData.info.participants
+                      .filter((data: Participant) => data.teamId === 200) // Replace 200 with the actual teamId for Team 2
+                      .map((data: Participant, i: number) => (
+                        <div className="team--info" key={i}>
+                          <img
+                            src={`https://ddragon.leagueoflegends.com/cdn/13.16.1/img/champion/${data.championName}.png`}
+                            alt={`Champion ${data.championName}`}
+                            width={26}
+                            height={26}
+                          />
+                          <div className="summonerName">
+                            <p> {data.summonerName}</p>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </div>
             );

@@ -12,3 +12,18 @@
 .match:last-child {
   margin-bottom: 0rem;
 }
+.summonerName {
+  max-width: 70px;
+}
+.summonerName p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.teams {
+  display: flex;
+  gap: 2rem;
+}
+
+.team--info {
+  display: flex;
+}
